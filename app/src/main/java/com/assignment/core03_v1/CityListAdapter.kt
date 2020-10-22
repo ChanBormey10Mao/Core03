@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class CityListAdapter() : RecyclerView.Adapter<CityListAdapter.ViewHolder>() {
+class CityListAdapter(cities: MutableList<city>) : RecyclerView.Adapter<CityListAdapter.ViewHolder>() {
+
+    //val onItemClick: ((city)-> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityListAdapter.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -36,14 +39,15 @@ class CityListAdapter() : RecyclerView.Adapter<CityListAdapter.ViewHolder>() {
                     heart.setImageResource(NotFav)
                 }
             }
-
+           
         }
+
     }
 
-    override fun getItemCount(): Int = CityObjectLists.count
+    override fun getItemCount(): Int = cities.size
 
-    override fun onBindViewHolder(holder: CityListAdapter.ViewHolder, position: Int) {
-        val item = CityObjectLists.cities.get(position)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = cities.get(position)
         holder.bind(item)
     }
 
