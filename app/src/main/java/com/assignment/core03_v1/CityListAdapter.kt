@@ -39,7 +39,9 @@ class CityListAdapter(cities: MutableList<city>) : RecyclerView.Adapter<CityList
                     heart.setImageResource(NotFav)
                 }
             }
-           
+            v.setOnClickListener{
+                    Toast.makeText(v.context,"${item.latitude} , ${item.longitude}", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
